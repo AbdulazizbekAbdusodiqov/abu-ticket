@@ -5,6 +5,8 @@ import { LangModule } from './lang/lang.module';
 import { Lang } from './lang/models/lang.model';
 import { HumanCategoryModule } from './human_category/human_category.module';
 import { HumanCategory } from './human_category/model/human_category.model';
+import { SeatTypeModule } from './seat_type/seat_type.module';
+import { SeatType } from './seat_type/models/seat_type.model';
 
 @Module({
   imports: [
@@ -16,13 +18,14 @@ import { HumanCategory } from './human_category/model/human_category.model';
       port: +process.env.POSTRES_PORT,
       password: process.env.POSTRES_PASSWORD,
       database: process.env.POSTRES_DB,
-      models: [Lang, HumanCategory],
+      models: [Lang, HumanCategory, SeatType],
       autoLoadModels : true,
       sync : {alter:true},
-      logging : true
+      logging : false
     }),
     LangModule,
-    HumanCategoryModule
+    HumanCategoryModule,
+    SeatTypeModule
   ],
   controllers: [],
   providers: [],

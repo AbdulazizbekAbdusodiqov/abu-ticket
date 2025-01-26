@@ -3,7 +3,6 @@ import { CreateHumanCategoryDto } from './dto/create-human_category.dto';
 import { UpdateHumanCategoryDto } from './dto/update-human_category.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { HumanCategory } from './model/human_category.model';
-import { HumanCategoryModule } from './human_category.module';
 
 @Injectable()
 
