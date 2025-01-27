@@ -1,26 +1,85 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTicketStatusDto } from './dto/create-ticket_status.dto';
 import { UpdateTicketStatusDto } from './dto/update-ticket_status.dto';
+import { InjectModel } from '@nestjs/sequelize';
+import { TicketStatus } from './model/ticket_status.model';
 
 @Injectable()
 export class TicketStatusService {
-  create(createTicketStatusDto: CreateTicketStatusDto) {
-    return 'This action adds a new ticketStatus';
+
+  constructor(
+    @InjectModel(TicketStatus)
+    private ticketStatusModel: typeof TicketStatus
+  ) { }
+
+  async create(createTicketStatusDto: CreateTicketStatusDto) {
+
+    try {
+      const newTicketStatus = await this.ticketStatusModel.create(createTicketStatusDto)
+
+      return { message: "ticket status created", newTicketStatus }
+    } catch (error) {
+      return { error: error.message }
+    }
   }
 
   findAll() {
-    return `This action returns all ticketStatus`;
+    try {
+
+      return this.ticketStatusModel.findAll()
+
+    } catch (error) {
+      return { error: error.message }
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} ticketStatus`;
+  async findOne(id: number) {
+    try {
+      const ticketStatus = await this.ticketStatusModel.findByPk(id)
+
+      if (!ticketStatus?.dataValues) {
+        return { message: "ticket status not found" }
+      }
+
+      return ticketStatus
+
+    } catch (error) {
+      return { error: error.message }
+    }
   }
 
-  update(id: number, updateTicketStatusDto: UpdateTicketStatusDto) {
-    return `This action updates a #${id} ticketStatus`;
+  async update(id: number, updateTicketStatusDto: UpdateTicketStatusDto) {
+    try {
+      const ticketStatus = await this.ticketStatusModel.findByPk(id)
+
+      if (!ticketStatus?.dataValues) {
+        return { message: "ticket status not found" }
+      }
+
+      await ticketStatus.update({ ...updateTicketStatusDto })
+
+      return { message: "updated", ticketStatus }
+
+    } catch (error) {
+      return { error: error.message }
+    }
+
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} ticketStatus`;
+  async remove(id: number) {
+    try {
+      const ticketStatus = await this.ticketStatusModel.findByPk(id)
+
+      if (!ticketStatus?.dataValues) {
+        return { message: "ticket status not found" }
+      }
+
+      await ticketStatus.destroy()
+
+      return { message: "deleted" }
+
+    } catch (error) {
+      return { error: error.message }
+    }
   }
 }

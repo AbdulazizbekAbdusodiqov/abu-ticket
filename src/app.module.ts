@@ -10,6 +10,7 @@ import { SeatType } from './seat_type/models/seat_type.model';
 import { VenueTypeModule } from './venue_type/venue_type.module';
 import { VenueType } from './venue_type/models/venue_type.model';
 import { TicketStatusModule } from './ticket_status/ticket_status.module';
+import { TicketStatus } from './ticket_status/model/ticket_status.model';
 
 @Module({
   imports: [
@@ -21,10 +22,16 @@ import { TicketStatusModule } from './ticket_status/ticket_status.module';
       port: +process.env.POSTRES_PORT,
       password: process.env.POSTRES_PASSWORD,
       database: process.env.POSTRES_DB,
-      models: [Lang, HumanCategory, SeatType, VenueType],
-      autoLoadModels : true,
-      sync : {alter:true},
-      logging : false
+      models: [
+        Lang,
+        HumanCategory,
+        SeatType,
+        VenueType,
+        TicketStatus
+      ],
+      autoLoadModels: true,
+      sync: { alter: true },
+      logging: false
     }),
     LangModule,
     HumanCategoryModule,
