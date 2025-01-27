@@ -15,6 +15,8 @@ import { CartStatusModule } from './cart_status/cart_status.module';
 import { CartStatus } from './cart_status/models/cart_status.model';
 import { PaymentMethodModule } from './payment_method/payment_method.module';
 import { PaymentMethod } from './payment_method/models/payment_method.model';
+import { DeliveryMethodModule } from './delivery_method/delivery_method.module';
+import { DeliveryMethod } from './delivery_method/models/delivery_method.model';
 
 @Module({
   imports: [
@@ -33,7 +35,8 @@ import { PaymentMethod } from './payment_method/models/payment_method.model';
         VenueType,
         TicketStatus,
         CartStatus,
-        PaymentMethod
+        PaymentMethod,
+        DeliveryMethod
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -45,7 +48,8 @@ import { PaymentMethod } from './payment_method/models/payment_method.model';
     VenueTypeModule,
     TicketStatusModule,
     CartStatusModule,
-    PaymentMethodModule
+    PaymentMethodModule,
+    DeliveryMethodModule
   ],
   controllers: [],
   providers: [],
