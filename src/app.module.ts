@@ -11,6 +11,7 @@ import { VenueTypeModule } from './venue_type/venue_type.module';
 import { VenueType } from './venue_type/models/venue_type.model';
 import { TicketStatusModule } from './ticket_status/ticket_status.module';
 import { TicketStatus } from './ticket_status/model/ticket_status.model';
+import { CartStatusModule } from './cart_status/cart_status.module';
 
 @Module({
   imports: [
@@ -37,7 +38,8 @@ import { TicketStatus } from './ticket_status/model/ticket_status.model';
     HumanCategoryModule,
     SeatTypeModule,
     VenueTypeModule,
-    TicketStatusModule
+    TicketStatusModule,
+    CartStatusModule
   ],
   controllers: [],
   providers: [],
