@@ -12,6 +12,9 @@ import { VenueType } from './venue_type/models/venue_type.model';
 import { TicketStatusModule } from './ticket_status/ticket_status.module';
 import { TicketStatus } from './ticket_status/model/ticket_status.model';
 import { CartStatusModule } from './cart_status/cart_status.module';
+import { CartStatus } from './cart_status/models/cart_status.model';
+import { PaymentMethodModule } from './payment_method/payment_method.module';
+import { PaymentMethod } from './payment_method/models/payment_method.model';
 
 @Module({
   imports: [
@@ -28,7 +31,9 @@ import { CartStatusModule } from './cart_status/cart_status.module';
         HumanCategory,
         SeatType,
         VenueType,
-        TicketStatus
+        TicketStatus,
+        CartStatus,
+        PaymentMethod
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -39,7 +44,8 @@ import { CartStatusModule } from './cart_status/cart_status.module';
     SeatTypeModule,
     VenueTypeModule,
     TicketStatusModule,
-    CartStatusModule
+    CartStatusModule,
+    PaymentMethodModule
   ],
   controllers: [],
   providers: [],
