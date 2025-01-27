@@ -17,6 +17,10 @@ import { PaymentMethodModule } from './payment_method/payment_method.module';
 import { PaymentMethod } from './payment_method/models/payment_method.model';
 import { DeliveryMethodModule } from './delivery_method/delivery_method.module';
 import { DeliveryMethod } from './delivery_method/models/delivery_method.model';
+import { RegionModule } from './region/region.module';
+import { Region } from './region/model/region.model';
+import { DistrictModule } from './district/district.module';
+import { District } from './district/models/district.model';
 
 @Module({
   imports: [
@@ -36,7 +40,9 @@ import { DeliveryMethod } from './delivery_method/models/delivery_method.model';
         TicketStatus,
         CartStatus,
         PaymentMethod,
-        DeliveryMethod
+        DeliveryMethod,
+        Region,
+        District
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -49,7 +55,9 @@ import { DeliveryMethod } from './delivery_method/models/delivery_method.model';
     TicketStatusModule,
     CartStatusModule,
     PaymentMethodModule,
-    DeliveryMethodModule
+    DeliveryMethodModule,
+    RegionModule,
+    DistrictModule
   ],
   controllers: [],
   providers: [],
