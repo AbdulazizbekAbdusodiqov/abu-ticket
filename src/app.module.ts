@@ -7,6 +7,9 @@ import { HumanCategoryModule } from './human_category/human_category.module';
 import { HumanCategory } from './human_category/model/human_category.model';
 import { SeatTypeModule } from './seat_type/seat_type.module';
 import { SeatType } from './seat_type/models/seat_type.model';
+import { VenueTypeModule } from './venue_type/venue_type.module';
+import { VenueType } from './venue_type/models/venue_type.model';
+import { TicketStatusModule } from './ticket_status/ticket_status.module';
 
 @Module({
   imports: [
@@ -18,14 +21,16 @@ import { SeatType } from './seat_type/models/seat_type.model';
       port: +process.env.POSTRES_PORT,
       password: process.env.POSTRES_PASSWORD,
       database: process.env.POSTRES_DB,
-      models: [Lang, HumanCategory, SeatType],
+      models: [Lang, HumanCategory, SeatType, VenueType],
       autoLoadModels : true,
       sync : {alter:true},
       logging : false
     }),
     LangModule,
     HumanCategoryModule,
-    SeatTypeModule
+    SeatTypeModule,
+    VenueTypeModule,
+    TicketStatusModule
   ],
   controllers: [],
   providers: [],
