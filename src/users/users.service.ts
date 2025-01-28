@@ -33,12 +33,18 @@ export class UsersService {
     
 
     await newUser.$set("roles", [role.id]);
-    await newUser.$set("roles", [role2.id]);
+    // await newUser.$set("roles", [role2.id]);
+
     await newUser.save()
     newUser.roles = [role]
-    newUser.roles = [role2]
+    
+    // newUser.roles = [role2]
 
     return newUser
+  }
+
+  findUserByEmail(email : string):Promise<User | null> {
+    return this.userModel.findOne({where:{email}, include:{all:true}})
   }
 
   findAll() {

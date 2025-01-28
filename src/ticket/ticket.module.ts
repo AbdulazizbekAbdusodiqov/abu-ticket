@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TicketService } from './ticket.service';
 import { TicketController } from './ticket.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Ticket } from './models/ticket.model';
+import { Ticket } from './model/ticket.model';
 
 @Module({
   imports:[SequelizeModule.forFeature([Ticket])],

@@ -16,7 +16,12 @@ async function start() {
       .addTag('cats')
       .build();
     const documentFactory = () => SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api', app, documentFactory);
+    SwaggerModule.setup('', app, documentFactory, 
+        {
+        swaggerOptions: { defaultModelsExpandDepth: -1 },
+      }
+    );
+    
     await app.listen(PORT, () => {
       console.log("server started at: http://localhost:" + PORT);
     });

@@ -33,7 +33,7 @@ export class User extends Model<User, IUserCreationAttr> {
 
     
     @Column({
-        type: DataType.STRING(30)
+        type: DataType.STRING
     })
     password: string;
     

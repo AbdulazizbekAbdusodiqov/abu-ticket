@@ -34,15 +34,27 @@ import { Cart } from './cart/models/cart.model';
 import { CartItemModule } from './cart_item/cart_item.module';
 import { CartItem } from './cart_item/models/cart_item.model';
 import { TicketModule } from './ticket/ticket.module';
-import { Ticket } from './ticket/models/ticket.model';
 import { EventType } from './event_type/models/event_type.model';
 import { EventTypeModule } from './event_type/event_type.module';
-import { EventModule } from './event/event.module';
 import { RolesModule } from './roles/roles.module';
 import { Role } from './roles/models/role.model';
 import { UsersModule } from './users/users.module';
 import { User } from './users/models/user.model';
 import { UserRole } from './users/models/user-role.model';
+import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
+import { Admin } from './admin/model/admin.model';
+import { Booking } from './booking/model/booking.model';
+import { BookingModule } from './booking/booking.module';
+import { BookingStatus } from './booking_status/model/booking_status.model';
+import { BookingStatusModule } from './booking_status/booking_status.module';
+import { DiscountCoupon } from './discount_coupon/model/discount_coupon.model';
+import { DiscountCouponModule } from './discount_coupon/discount_coupon.module';
+import { Ticket } from './ticket/model/ticket.model';
+import { SeatModule } from './seat/seat.module';
+import { Seat } from './seat/model/seat.model';
+import { Event } from './event/model/event.model';
+import { EventModule } from './event/event.module';
 
 @Module({
   imports: [
@@ -75,11 +87,18 @@ import { UserRole } from './users/models/user-role.model';
         EventType,
         Role,
         User,
-        UserRole
+        UserRole,
+        Admin,
+        BookingStatus,
+        Booking,
+        DiscountCoupon,
+        Seat,
+        Event
       ],
       autoLoadModels: true,
-      sync: { alter: true },
-      logging: false
+      sync: { alter: true, force: true },
+      logging: false,
+  
     }),
     LangModule,
     HumanCategoryModule,
@@ -101,7 +120,14 @@ import { UserRole } from './users/models/user-role.model';
     EventTypeModule,
     EventModule,
     RolesModule,
-    UsersModule
+    UsersModule,
+    AuthModule,
+    AdminModule,
+    BookingStatusModule,
+    BookingModule,
+    DiscountCouponModule,
+    SeatModule,
+
   ],
   controllers: [],
   providers: [],
