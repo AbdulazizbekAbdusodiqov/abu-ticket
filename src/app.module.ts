@@ -21,17 +21,25 @@ import { RegionModule } from './region/region.module';
 import { Region } from './region/model/region.model';
 import { DistrictModule } from './district/district.module';
 import { District } from './district/models/district.model';
+import { VenueModule } from './venue/venue.module';
+import { Venue } from './venue/model/venue.model';
+import { VenuePhotoModule } from './venue_photo/venue_photo.module';
+import { VenuePhoto } from './venue_photo/model/venue_photo.model';
+import { VenueVenueTypeModule } from './venue_venue-type/venue_venue-type.module';
+import { VenueVenueType } from './venue_venue-type/models/venue_venue-type.model';
+import { CustomerModule } from './customer/customer.module';
+import { Customer } from './customer/models/customer.model';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: ".env", isGlobal: true }),
     SequelizeModule.forRoot({
       dialect: "postgres",
-      host: process.env.POSTRES_HOST,
-      username: process.env.POSTRES_USER,
-      port: +process.env.POSTRES_PORT,
-      password: process.env.POSTRES_PASSWORD,
-      database: process.env.POSTRES_DB,
+      host: process.env.POSTGRES_HOST,
+      username: process.env.POSTGRES_USER,
+      port: +process.env.POSTGRES_PORT,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DB,
       models: [
         Lang,
         HumanCategory,
@@ -42,7 +50,11 @@ import { District } from './district/models/district.model';
         PaymentMethod,
         DeliveryMethod,
         Region,
-        District
+        District,
+        Venue,
+        VenuePhoto,
+        VenueVenueType,
+        Customer
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -57,7 +69,11 @@ import { District } from './district/models/district.model';
     PaymentMethodModule,
     DeliveryMethodModule,
     RegionModule,
-    DistrictModule
+    DistrictModule,
+    VenueModule,
+    VenuePhotoModule,
+    VenueVenueTypeModule,
+    CustomerModule
   ],
   controllers: [],
   providers: [],

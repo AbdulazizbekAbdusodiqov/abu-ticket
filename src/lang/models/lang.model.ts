@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Customer } from "src/customer/models/customer.model";
 
 interface ILangCreationAttr {
     name: string
@@ -17,4 +18,7 @@ export class Lang extends Model<Lang, ILangCreationAttr> {
         type :DataType.STRING(50)
     })
     name:string;
+
+    @HasMany(()=>Customer)
+    customer:Customer[]
 }
