@@ -1,4 +1,5 @@
-import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import { Cart } from "src/cart/models/cart.model";
 import { Lang } from "src/lang/models/lang.model";
 
 
@@ -68,4 +69,7 @@ export class Customer extends Model<Customer, ICustomerCreationAttr> {
 
     @BelongsTo(()=>Lang)
     lang:Lang
+
+    @HasMany(()=>Cart)
+    cart:Cart
 }

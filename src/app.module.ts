@@ -29,6 +29,8 @@ import { VenueVenueTypeModule } from './venue_venue-type/venue_venue-type.module
 import { VenueVenueType } from './venue_venue-type/models/venue_venue-type.model';
 import { CustomerModule } from './customer/customer.module';
 import { Customer } from './customer/models/customer.model';
+import { CartModule } from './cart/cart.module';
+import { Cart } from './cart/models/cart.model';
 
 @Module({
   imports: [
@@ -54,7 +56,8 @@ import { Customer } from './customer/models/customer.model';
         Venue,
         VenuePhoto,
         VenueVenueType,
-        Customer
+        Customer,
+        Cart
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -73,7 +76,8 @@ import { Customer } from './customer/models/customer.model';
     VenueModule,
     VenuePhotoModule,
     VenueVenueTypeModule,
-    CustomerModule
+    CustomerModule,
+    CartModule
   ],
   controllers: [],
   providers: [],

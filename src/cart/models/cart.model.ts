@@ -1,0 +1,43 @@
+import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { CartStatus } from "src/cart_status/models/cart_status.model";
+import { Customer } from "src/customer/models/customer.model";
+
+
+interface ICartCreationAttr{
+    customerId:number;
+    statusId:number
+}
+
+@Table({tableName:"cart"})
+export class Cart extends Model<Cart, ICartCreationAttr> {
+    @Column({
+        type:DataType.INTEGER,
+        autoIncrement:true,
+        primaryKey:true
+    })
+    id:number;
+    
+    @ForeignKey(()=>Customer)
+    @Column({
+        type:DataType.INTEGER,
+    })
+    customerId:number;
+
+    @BelongsTo(()=>Customer)
+    customer:Customer
+
+    @Column({
+        type:DataType.DATE,
+    })
+    finishedAt: Date | null;
+
+    @ForeignKey(()=>CartStatus)
+    @Column({
+        type:DataType.INTEGER,
+    })
+    statusId:number
+
+    @BelongsTo(()=>CartStatus)
+    status:CartStatus
+    
+}
