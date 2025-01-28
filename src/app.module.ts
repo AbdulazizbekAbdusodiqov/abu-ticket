@@ -55,6 +55,8 @@ import { SeatModule } from './seat/seat.module';
 import { Seat } from './seat/model/seat.model';
 import { Event } from './event/model/event.model';
 import { EventModule } from './event/event.module';
+import { CustomerAddressModule } from './customer_address/customer_address.module';
+import { CustomerAddress } from './customer_address/model/customer_address.model';
 
 @Module({
   imports: [
@@ -93,12 +95,16 @@ import { EventModule } from './event/event.module';
         Booking,
         DiscountCoupon,
         Seat,
-        Event
+        Event,
+        CustomerAddress
       ],
       autoLoadModels: true,
-      sync: { alter: true, force: true },
+      sync: {
+        alter: true,
+        // force: true
+      },
       logging: false,
-  
+
     }),
     LangModule,
     HumanCategoryModule,
@@ -127,7 +133,7 @@ import { EventModule } from './event/event.module';
     BookingModule,
     DiscountCouponModule,
     SeatModule,
-
+    CustomerAddressModule
   ],
   controllers: [],
   providers: [],
