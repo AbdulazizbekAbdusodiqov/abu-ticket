@@ -37,6 +37,12 @@ import { TicketModule } from './ticket/ticket.module';
 import { Ticket } from './ticket/models/ticket.model';
 import { EventType } from './event_type/models/event_type.model';
 import { EventTypeModule } from './event_type/event_type.module';
+import { EventModule } from './event/event.module';
+import { RolesModule } from './roles/roles.module';
+import { Role } from './roles/models/role.model';
+import { UsersModule } from './users/users.module';
+import { User } from './users/models/user.model';
+import { UserRole } from './users/models/user-role.model';
 
 @Module({
   imports: [
@@ -66,7 +72,10 @@ import { EventTypeModule } from './event_type/event_type.module';
         Cart,
         CartItem,
         Ticket,
-        EventType
+        EventType,
+        Role,
+        User,
+        UserRole
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -89,7 +98,10 @@ import { EventTypeModule } from './event_type/event_type.module';
     CartModule,
     CartItemModule,
     TicketModule,
-    EventTypeModule
+    EventTypeModule,
+    EventModule,
+    RolesModule,
+    UsersModule
   ],
   controllers: [],
   providers: [],
