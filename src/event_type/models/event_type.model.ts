@@ -1,11 +1,13 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
+
 interface IEventTypeCreationAttr {
-    name: string;
+    name: string
 }
 
-@Table({ tableName: "event_type" })
-export class EventType extends Model<Event, IEventTypeCreationAttr> {
+@Table({tableName:"event_type"})
+export class EventType extends Model<EventType, IEventTypeCreationAttr> {
+
     @Column({
         type: DataType.INTEGER,
         autoIncrement: true,
@@ -14,7 +16,7 @@ export class EventType extends Model<Event, IEventTypeCreationAttr> {
     id: number;
 
     @Column({
-        type: DataType.STRING(50)
+        type: DataType.STRING
     })
     name: string;
 }

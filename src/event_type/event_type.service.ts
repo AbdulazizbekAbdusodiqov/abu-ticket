@@ -5,9 +5,6 @@ import { InjectModel } from '@nestjs/sequelize';
 import { EventType } from './models/event_type.model';
 
 @Injectable()
-
-
-
 export class EventTypeService {
 
   constructor(
@@ -15,7 +12,7 @@ export class EventTypeService {
   ) { }
 
   create(createEventTypeDto: CreateEventTypeDto) {
-    return this.eventTypeModel.create(createEventTypeDto)
+    return this.eventTypeModel.create({...createEventTypeDto})
   }
 
   findAll() {
@@ -27,19 +24,18 @@ export class EventTypeService {
   }
 
   async update(id: number, updateEventTypeDto: UpdateEventTypeDto) {
-    const [affectedRows, updatedEventTypes] = await this.eventTypeModel.update(
-        { ...updateEventTypeDto }, // DTO ni to'g'ri formatga o'tkazish
-        { where: { id }, returning: true }
-    );
-
-    if (affectedRows === 0) {
-        return { message: "Event type not found" };
+    
+    const updatedEventType = await this.eventTypeModel.findByPk(id)
+    if(!updatedEventType?.dataValues){
+      return {message:"not found"}
     }
 
-    return { message: "Updated", updatedEventType: updatedEventTypes[0] };
-}
+    await updatedEventType.update({...updateEventTypeDto})
+
+    return {message : "updated"}
+  }
 
   remove(id: number) {
-    return `This action removes a #${id} eventType`;
+    return this.eventTypeModel.destroy({where:{id}})
   }
 }

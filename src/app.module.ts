@@ -35,8 +35,8 @@ import { CartItemModule } from './cart_item/cart_item.module';
 import { CartItem } from './cart_item/models/cart_item.model';
 import { TicketModule } from './ticket/ticket.module';
 import { Ticket } from './ticket/models/ticket.model';
-import { EventTypeModule } from './event_type/event_type.module';
 import { EventType } from './event_type/models/event_type.model';
+import { EventTypeModule } from './event_type/event_type.module';
 
 @Module({
   imports: [
