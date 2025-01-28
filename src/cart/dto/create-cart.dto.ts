@@ -6,5 +6,5 @@ export class CreateCartDto {
     @IsDate()
     finishedAt?: Date | null;
     @IsNumber()
-    statusId: number
+    cart_statusId: number
 }

@@ -5,7 +5,7 @@ import { Customer } from "src/customer/models/customer.model";
 
 interface ICartCreationAttr{
     customerId:number;
-    statusId:number
+    cart_statusId:number
 }
 
 @Table({tableName:"cart"})
@@ -35,7 +35,7 @@ export class Cart extends Model<Cart, ICartCreationAttr> {
     @Column({
         type:DataType.INTEGER,
     })
-    statusId:number
+    cart_statusId:number
 
     @BelongsTo(()=>CartStatus)
     status:CartStatus

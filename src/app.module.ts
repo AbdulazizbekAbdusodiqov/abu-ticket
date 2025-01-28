@@ -31,6 +31,12 @@ import { CustomerModule } from './customer/customer.module';
 import { Customer } from './customer/models/customer.model';
 import { CartModule } from './cart/cart.module';
 import { Cart } from './cart/models/cart.model';
+import { CartItemModule } from './cart_item/cart_item.module';
+import { CartItem } from './cart_item/models/cart_item.model';
+import { TicketModule } from './ticket/ticket.module';
+import { Ticket } from './ticket/models/ticket.model';
+import { EventTypeModule } from './event_type/event_type.module';
+import { EventType } from './event_type/models/event_type.model';
 
 @Module({
   imports: [
@@ -57,7 +63,10 @@ import { Cart } from './cart/models/cart.model';
         VenuePhoto,
         VenueVenueType,
         Customer,
-        Cart
+        Cart,
+        CartItem,
+        Ticket,
+        EventType
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -77,7 +86,10 @@ import { Cart } from './cart/models/cart.model';
     VenuePhotoModule,
     VenueVenueTypeModule,
     CustomerModule,
-    CartModule
+    CartModule,
+    CartItemModule,
+    TicketModule,
+    EventTypeModule
   ],
   controllers: [],
   providers: [],
