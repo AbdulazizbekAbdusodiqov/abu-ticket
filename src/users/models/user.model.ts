@@ -7,6 +7,7 @@ interface IUserCreationAttr {
     name: string;
     email: string;
     password: string;
+    value:string;
 }
 
 @Table({ tableName: "users" })
@@ -30,10 +31,16 @@ export class User extends Model<User, IUserCreationAttr> {
     })
     email: string;
 
+    
     @Column({
         type: DataType.STRING(30)
     })
     password: string;
+    
+    @Column({
+        type: DataType.STRING(50),
+    })
+    value: string;
 
     @Column({
         type: DataType.BOOLEAN,

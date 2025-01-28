@@ -1,27 +1,48 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './models/user.model';
-import { RolesService } from 'src/roles/roles.service';
+import { RolesService } from '../roles/roles.service';
+import { Role } from '../roles/models/role.model';
 
 @Injectable()
 export class UsersService {
 
   constructor(
     @InjectModel(User) private userModel: typeof User,
-    private readonly roleService:RolesService
+    @InjectModel(Role) private roleModel: typeof Role,
+    private readonly roleService: RolesService
   ) { }
 
   async create(createUserDto: CreateUserDto) {
 
     const newUser = await this.userModel.create(createUserDto)
+    const role = await this.roleService.findRoleByValue(createUserDto.value)
 
-    return
+    const role2 = await this.roleModel.findOne({
+      where: { value : createUserDto.value.toUpperCase()}
+    })
+
+    if(!role){
+      throw new NotFoundException("Role not found")
+    }
+    if(!role2){
+      throw new NotFoundException("Role not found")
+    }
+    
+
+    await newUser.$set("roles", [role.id]);
+    await newUser.$set("roles", [role2.id]);
+    await newUser.save()
+    newUser.roles = [role]
+    newUser.roles = [role2]
+
+    return newUser
   }
 
   findAll() {
-    return this.userModel.findAll()
+    return this.userModel.findAll({include:{all:true}})
   }
 
   findOne(id: number) {

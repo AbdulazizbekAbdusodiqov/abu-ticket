@@ -16,7 +16,7 @@ export class RolesService {
   }
 
   findAll() {
-    return this.roleModel.findAll()
+    return this.roleModel.findAll({include:{all:true}})
   }
 
   findOne(id: number) {
