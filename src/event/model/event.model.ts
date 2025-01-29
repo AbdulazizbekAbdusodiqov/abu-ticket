@@ -1,4 +1,4 @@
-import { Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { EventType } from "src/event_type/models/event_type.model";
 import { Lang } from "src/lang/models/lang.model";
 import { Ticket } from "src/ticket/model/ticket.model";
@@ -85,6 +85,8 @@ export class Event extends Model<Event, IEventCreationAttr> {
   })
   humanCategoryId: number;
 
+  @BelongsTo(()=>HumanCategory)
+  humanCategory: HumanCategory
 
   @ForeignKey(() => Venue)
   @Column({
