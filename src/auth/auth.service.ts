@@ -1,10 +1,12 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 
 import * as bcrypt from "bcrypt"
 import { User } from '../users/models/user.model';
 import { JwtService } from '@nestjs/jwt';
+import { SignInDto } from './dto/sign_in.dto';
+import { of } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -34,6 +36,27 @@ export class AuthService {
             roles: user.roles
         }
         return { token: this.jwtService.sign(payload) }
+    }
+
+    async signIn(signInDto: SignInDto) {
+        const user = await this.userService.findUserByEmail(signInDto.email)
+
+        if (!user) {
+            throw new UnauthorizedException("Invalid Email or Password")
+        }
+        const isValidPassword = await bcrypt.compare(signInDto.password, user.password)
+        if (!isValidPassword) {
+            throw new UnauthorizedException("Invalid Email or Password")
+        }
+
+
+        for (const role of user.roles) {
+            if (role.value == signInDto.value.toUpperCase()) {
+                return this.generateToken(user)
+            }
+        }
+
+        throw new ForbiddenException()
     }
 
 }

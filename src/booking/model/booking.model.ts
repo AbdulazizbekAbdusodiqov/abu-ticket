@@ -21,7 +21,7 @@ export class Booking extends Model<Booking, IBookingCreationAttr> {
     type: DataType.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-  })
+  }) 
   id: number;
 
   @Column({

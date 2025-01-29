@@ -9,6 +9,12 @@ async function start() {
     const PORT = process.env.PORT ?? 3001
     const app = await NestFactory.create(AppModule);
     app.useGlobalPipes(new ValidationPipe());
+    app.useGlobalPipes(
+      new ValidationPipe({
+        transform: true,
+      }),
+    );
+
     const config = new DocumentBuilder()
       .setTitle('Cats example')
       .setDescription('The cats API description')
@@ -16,12 +22,12 @@ async function start() {
       .addTag('cats')
       .build();
     const documentFactory = () => SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('', app, documentFactory, 
-        {
+    SwaggerModule.setup('', app, documentFactory,
+      {
         swaggerOptions: { defaultModelsExpandDepth: -1 },
       }
     );
-    
+
     await app.listen(PORT, () => {
       console.log("server started at: http://localhost:" + PORT);
     });

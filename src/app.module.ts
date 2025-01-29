@@ -101,7 +101,7 @@ import { CustomerAddress } from './customer_address/model/customer_address.model
       autoLoadModels: true,
       sync: {
         alter: true,
-        // force: true
+        force: false
       },
       logging: false,
 
