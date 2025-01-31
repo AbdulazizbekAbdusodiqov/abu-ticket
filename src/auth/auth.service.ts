@@ -6,7 +6,6 @@ import * as bcrypt from "bcrypt"
 import { User } from '../users/models/user.model';
 import { JwtService } from '@nestjs/jwt';
 import { SignInDto } from './dto/sign_in.dto';
-import { of } from 'rxjs';
 
 @Injectable()
 export class AuthService {
