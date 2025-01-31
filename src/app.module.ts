@@ -57,6 +57,7 @@ import { Event } from './event/model/event.model';
 import { EventModule } from './event/event.module';
 import { CustomerAddressModule } from './customer_address/customer_address.module';
 import { CustomerAddress } from './customer_address/model/customer_address.model';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -133,7 +134,8 @@ import { CustomerAddress } from './customer_address/model/customer_address.model
     BookingModule,
     DiscountCouponModule,
     SeatModule,
-    CustomerAddressModule
+    CustomerAddressModule,
+    FileModule
   ],
   controllers: [],
   providers: [],

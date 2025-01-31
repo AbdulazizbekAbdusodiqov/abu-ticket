@@ -10,7 +10,7 @@ export class CustomerValidationPipe implements PipeTransform<any> {
         if (!metatype || !this.toValidate(metatype)) {
             return value;
         }
-        console.log(metatype);
+        // console.log(metatype);
         
 
         const object = plainToInstance(metatype, value);

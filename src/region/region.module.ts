@@ -3,9 +3,13 @@ import { RegionService } from './region.service';
 import { RegionController } from './region.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Region } from './model/region.model';
+import { FileModule } from '../file/file.module';
 
 @Module({
-  imports : [SequelizeModule.forFeature([Region])],
+  imports : [
+    FileModule,
+    SequelizeModule.forFeature([Region])
+  ],
   controllers: [RegionController],
   providers: [RegionService],
 })

@@ -1,15 +1,22 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { RegionService } from './region.service';
 import { CreateRegionDto } from './dto/create-region.dto';
 import { UpdateRegionDto } from './dto/update-region.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('region')
 export class RegionController {
   constructor(private readonly regionService: RegionService) {}
 
   @Post()
-  create(@Body() createRegionDto: CreateRegionDto) {
-    return this.regionService.create(createRegionDto);
+  @UseInterceptors(FileInterceptor("image"))
+  create(
+    @Body() createRegionDto: CreateRegionDto,
+    @UploadedFile() image:any
+  ) {
+    console.log(image);
+    
+    return this.regionService.create(createRegionDto, image);
   }
 
   @Get()
