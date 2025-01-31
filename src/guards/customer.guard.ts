@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class AdminGuard implements CanActivate {
+export class CustomerGuard implements CanActivate {
   constructor(
     private readonly jwtService: JwtService
   ) { }
@@ -24,20 +24,18 @@ export class AdminGuard implements CanActivate {
       throw new UnauthorizedException()
     }
 
-    let admin: any;
+    let customer: any;
     try {
-      admin = this.jwtService.verify(token)
-    } catch (error) {
-      console.log("xaton 3");
-      
+      customer = this.jwtService.verify(token)
+    } catch (error) {      
       throw new UnauthorizedException()
     }
-    if(admin.role != 'customer'){
+    if(customer.role != 'customer'){
       throw new UnauthorizedException()
     }
-    console.log(admin);
+    console.log(customer);
 
-    req.admin = admin
+    req.customer = customer
     
     return true
   }
