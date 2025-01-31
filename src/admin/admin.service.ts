@@ -45,7 +45,7 @@ export class AdminService {
     return this.adminModel.update(updateAdminDto, {
       where: { id },
       returning: true,
-    });
+    })[1][0]
   }
 
   remove(id: number) {
