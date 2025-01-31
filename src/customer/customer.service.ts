@@ -4,12 +4,14 @@ import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { Customer } from './models/customer.model';
 import { InjectModel } from '@nestjs/sequelize';
 import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
 
 
 @Injectable()
 export class CustomerService {
   constructor(
-    @InjectModel(Customer) private customerModel: typeof Customer
+    @InjectModel(Customer) private customerModel: typeof Customer,
+    private jwtService: JwtService
   ) { }
 
   async create(createCustomerDto: CreateCustomerDto) {
@@ -27,7 +29,17 @@ export class CustomerService {
 
       const newCustomer = await this.customerModel.create({ ...createCustomerDto, password: hashed_password })
 
-      return { message: "customer success created", newCustomer }
+      const tokens = await this.generateToken(newCustomer)
+
+      newCustomer.hashed_refresh_token = tokens.refreshToken
+
+      await newCustomer.save()
+
+      return {
+        message: "customer success created",
+        newCustomer,
+        access_token: tokens.accessToken
+      }
     } catch (error) {
       console.log(error);
       return { error: error.message }
@@ -86,11 +98,22 @@ export class CustomerService {
 
       await customer.destroy()
 
-      return {message:"customer deleted"}
+      return { message: "customer deleted" }
 
     } catch (error) {
       console.log(error);
       return { error: error.message }
+    }
+  }
+  private async generateToken(customer: Customer) {
+    const payload = {
+      id: customer.id,
+      email: customer.email,
+      role: "customer",
+    }
+    return {
+      accessToken: this.jwtService.sign(payload),
+      refreshToken: this.jwtService.sign(payload)
     }
   }
 }

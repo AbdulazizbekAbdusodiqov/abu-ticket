@@ -32,7 +32,7 @@ export class AdminGuard implements CanActivate {
       
       throw new UnauthorizedException()
     }
-    if(admin.role != 'admin'){
+    if(admin.role != 'customer'){
       throw new UnauthorizedException()
     }
     console.log(admin);
