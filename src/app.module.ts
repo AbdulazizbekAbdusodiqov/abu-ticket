@@ -58,9 +58,18 @@ import { EventModule } from './event/event.module';
 import { CustomerAddressModule } from './customer_address/customer_address.module';
 import { CustomerAddress } from './customer_address/model/customer_address.model';
 import { FileModule } from './file/file.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { SingleFileController } from './single-file.controller';
+import { MultiFileController } from './multi-file.controller';
+import { SingleFileService } from './single-file.service';
+import { MultiFileService } from './multi-file.service';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..','static'),
+    }),
     ConfigModule.forRoot({ envFilePath: ".env", isGlobal: true }),
     SequelizeModule.forRoot({
       dialect: "postgres",
@@ -137,7 +146,7 @@ import { FileModule } from './file/file.module';
     CustomerAddressModule,
     FileModule
   ],
-  controllers: [],
-  providers: [],
+  controllers: [SingleFileController, MultiFileController],
+  providers: [SingleFileService, MultiFileService],
 })
 export class AppModule { }
