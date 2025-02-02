@@ -64,6 +64,7 @@ import { SingleFileController } from './single-file.controller';
 import { MultiFileController } from './multi-file.controller';
 import { SingleFileService } from './single-file.service';
 import { MultiFileService } from './multi-file.service';
+import { AwsFileModule } from './aws_file/aws_file.module';
 
 @Module({
   imports: [
@@ -144,7 +145,8 @@ import { MultiFileService } from './multi-file.service';
     DiscountCouponModule,
     SeatModule,
     CustomerAddressModule,
-    FileModule
+    FileModule,
+    AwsFileModule
   ],
   controllers: [SingleFileController, MultiFileController],
   providers: [SingleFileService, MultiFileService],

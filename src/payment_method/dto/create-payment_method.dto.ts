@@ -1,3 +1,6 @@
+import { ApiProperty } from "@nestjs/swagger";
+
 export class CreatePaymentMethodDto {
-    name:string
+    @ApiProperty({ example: "test" })
+    name: string
 }
