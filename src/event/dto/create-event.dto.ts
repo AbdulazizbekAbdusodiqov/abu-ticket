@@ -3,8 +3,6 @@ import { ApiProperty } from "@nestjs/swagger";
 export class CreateEventDto {
   @ApiProperty({example: "test"})
   name: string;
-  @ApiProperty({example: "asdfdssdf"})
-  photo: string;
   @ApiProperty({example: "01-01-2025"})
   start_date: string;
   @ApiProperty({example: "01-01-2025"})
@@ -25,4 +23,5 @@ export class CreateEventDto {
   langId: number;
   @ApiProperty({example: "01-01-2025"})
   release_date: string;
+  photo: string;
 }

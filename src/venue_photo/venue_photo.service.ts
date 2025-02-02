@@ -3,16 +3,21 @@ import { CreateVenuePhotoDto } from './dto/create-venue_photo.dto';
 import { UpdateVenuePhotoDto } from './dto/update-venue_photo.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { VenuePhoto } from './model/venue_photo.model';
+import { FileService } from '../file/file.service';
 
 @Injectable()
 export class VenuePhotoService {
 
   constructor(
-    @InjectModel(VenuePhoto) private venuePhotoModel: typeof VenuePhoto
+    @InjectModel(VenuePhoto) private venuePhotoModel: typeof VenuePhoto,
+    private readonly fileService : FileService
   ) { }
 
-  create(createVenuePhotoDto: CreateVenuePhotoDto) {
-    return this.venuePhotoModel.create(createVenuePhotoDto)
+  async create(createVenuePhotoDto: CreateVenuePhotoDto, image : Express.Multer.File) {
+
+    const reqImage =  await  this.fileService.uploadFile(image)
+
+    return this.venuePhotoModel.create({...createVenuePhotoDto, url:reqImage.Location})
   }
 
   findAll() {
