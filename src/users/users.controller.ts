@@ -53,7 +53,7 @@ export class UsersController {
   @UseGuards(JwtSelfGuard)
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.usersService.findOne(+id);
   }
 

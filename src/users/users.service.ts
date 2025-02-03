@@ -128,7 +128,8 @@ export class UsersService {
     return this.userModel.update(updateUserDto, {where:{id}, returning:true})[1][0]
   }
 
-  remove(id: number) {
-    return this.userModel.destroy({where:{id}})
+  async remove(id: number) {
+    await this.userModel.destroy({where:{id}})
+    return {message:"Foydalanuvchi o'chirildi"};
   }
 }
