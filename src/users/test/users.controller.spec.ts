@@ -79,4 +79,20 @@ describe("UsersController", () => {
 
         })
     })
+
+    describe("Remove One User", () => {
+        describe("when remove user is called", () => {
+            let user: Object;
+            beforeAll(async () => {
+                user = await usersController.remove(userStub().id);
+            });
+            test("then it should call usersServices remove method", () => {
+                expect(usersService.remove).toHaveBeenCalled();
+            });
+            test("then it should return users", () => {
+                expect(user).toEqual({ message: "Foydalanuvchi o'chirildi" });
+            });
+
+        })
+    })
 })
