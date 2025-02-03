@@ -1,7 +1,6 @@
 import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
-import { toDefaultValue } from "sequelize/types/utils";
-import { Cart } from "src/cart/models/cart.model";
-import { Lang } from "src/lang/models/lang.model";
+import { Lang } from "../../lang/models/lang.model";
+import { Cart } from "../../cart/models/cart.model";
 
 
 interface ICustomerCreationAttr {

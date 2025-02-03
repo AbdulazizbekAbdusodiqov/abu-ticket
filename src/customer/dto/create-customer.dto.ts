@@ -30,7 +30,6 @@ export class CreateCustomerDto {
     email: string;
     @IsString()
     @ApiProperty({ example: "01-01-2025" })
-    @ApiProperty({ example: "01-01-2025" })
     birth_day: string;
     @IsString()
     @IsEnum(Gender)

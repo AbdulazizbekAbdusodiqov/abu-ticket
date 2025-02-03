@@ -1,6 +1,6 @@
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
-import { CartStatus } from "src/cart_status/models/cart_status.model";
-import { Customer } from "src/customer/models/customer.model";
+import { CartStatus } from "../../cart_status/models/cart_status.model";
+import { Customer } from "../../customer/models/customer.model";
 
 
 interface ICartCreationAttr{

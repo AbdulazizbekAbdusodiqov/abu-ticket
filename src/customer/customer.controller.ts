@@ -23,19 +23,19 @@ export class CustomerController {
   @UseGuards(CustomerSelfGuard)
   @UseGuards(CustomerGuard)
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.customerService.findOne(+id);
   }
   @UseGuards(CustomerSelfGuard)
   @UseGuards(CustomerGuard)
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCustomerDto: UpdateCustomerDto) {
+  update(@Param('id') id: number, @Body() updateCustomerDto: UpdateCustomerDto) {
     return this.customerService.update(+id, updateCustomerDto);
   }
   
   @UseGuards(AdminGuard)
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.customerService.remove(+id);
   }
 }

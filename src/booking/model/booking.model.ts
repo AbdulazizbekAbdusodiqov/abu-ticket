@@ -1,5 +1,5 @@
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
-import { BookingStatus } from "src/booking_status/model/booking_status.model";
+import { BookingStatus } from "../../booking_status/model/booking_status.model";
 import { PaymentMethod } from "../../payment_method/models/payment_method.model";
 import { DeliveryMethod } from "../../delivery_method/models/delivery_method.model";
 import { Cart } from "../../cart/models/cart.model";
