@@ -1,6 +1,6 @@
 import { BelongsTo, BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
-import { Venue } from "src/venue/model/venue.model";
-import { VenueVenueType } from "src/venue_venue-type/models/venue_venue-type.model";
+import { Venue } from "../../venue/model/venue.model";
+import { VenueVenueType } from "../../venue_venue-type/models/venue_venue-type.model";
 
 interface IVenueTypeCreationAttr {
     name: string

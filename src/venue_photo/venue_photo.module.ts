@@ -3,7 +3,7 @@ import { VenuePhotoService } from './venue_photo.service';
 import { VenuePhotoController } from './venue_photo.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { VenuePhoto } from './model/venue_photo.model';
-import { Venue } from 'src/venue/model/venue.model';
+import { Venue } from '../venue/model/venue.model';
 import { FileModule } from '../file/file.module';
 
 @Module({

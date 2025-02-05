@@ -38,4 +38,9 @@ export class CustomerController {
   remove(@Param('id') id: number) {
     return this.customerService.remove(+id);
   }
+
+  @Post('login')
+  login(@Body() body: any) {
+    return this.customerService.login(body)
+  }
 }

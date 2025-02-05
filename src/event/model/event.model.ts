@@ -1,8 +1,8 @@
 import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
-import { EventType } from "src/event_type/models/event_type.model";
-import { Lang } from "src/lang/models/lang.model";
-import { Ticket } from "src/ticket/model/ticket.model";
-import { Venue } from "src/venue/model/venue.model";
+import { EventType } from "../../event_type/models/event_type.model";
+import { Lang } from "../../lang/models/lang.model";
+import { Ticket } from "../../ticket/model/ticket.model";
+import { Venue } from "../../venue/model/venue.model";
 import { HumanCategory } from "../../human_category/model/human_category.model";
 
 

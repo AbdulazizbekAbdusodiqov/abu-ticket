@@ -86,4 +86,26 @@ export class CustomerService {
       refreshToken: this.jwtService.sign(payload)
     }
   }
+
+  async login(body: any) {
+    const customer = await this.customerModel.findOne({ where: { email: body.email } })
+
+    if (!customer?.dataValues) {
+      return { message: "customer not found" }
+    }
+
+    const isValidPassword = await bcrypt.compare(body.password, customer.password)
+
+    if (!isValidPassword) {
+      return { message: "invalid password" }
+    }
+
+    const tokens = await this.generateToken(customer)
+
+    customer.hashed_refresh_token = tokens.refreshToken
+
+    await customer.save()
+
+    return tokens
+  }
 }

@@ -1,6 +1,6 @@
 import { BelongsTo, Column, DataType, ForeignKey, HasMany, HasOne, Model, Table } from "sequelize-typescript";
-import { DiscountCoupon } from "src/discount_coupon/model/discount_coupon.model";
-import { TicketStatus } from "src/ticket_status/model/ticket_status.model";
+import { DiscountCoupon } from "../../discount_coupon/model/discount_coupon.model";
+import { TicketStatus } from "../../ticket_status/model/ticket_status.model";
 import { Seat } from "../../seat/model/seat.model";
 import { Event } from "../../event/model/event.model";
 import { CartItem } from "../../cart_item/models/cart_item.model";

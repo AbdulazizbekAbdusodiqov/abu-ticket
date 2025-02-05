@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class CustomerSelfGuard implements CanActivate {
   constructor(
-    private readonly jwtService: JwtService
   ) { }
   canActivate(
     context: ExecutionContext,

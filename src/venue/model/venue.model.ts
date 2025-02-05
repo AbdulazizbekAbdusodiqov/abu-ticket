@@ -1,9 +1,9 @@
 import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
-import { District } from "src/district/models/district.model";
-import { Region } from "src/region/model/region.model";
-import { VenuePhoto } from "src/venue_photo/model/venue_photo.model";
-import { VenueType } from "src/venue_type/models/venue_type.model";
-import { VenueVenueType } from "src/venue_venue-type/models/venue_venue-type.model";
+import { District } from "../../district/models/district.model";
+import { Region } from "../../region/model/region.model";
+import { VenuePhoto } from "../../venue_photo/model/venue_photo.model";
+import { VenueType } from "../../venue_type/models/venue_type.model";
+import { VenueVenueType } from "../../venue_venue-type/models/venue_venue-type.model";
 
 
 interface IVenueCreationAttr {

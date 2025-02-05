@@ -1,6 +1,6 @@
 import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
-import { Region } from "src/region/model/region.model";
-import { Venue } from "src/venue/model/venue.model";
+import { Region } from "../../region/model/region.model";
+import { Venue } from "../../venue/model/venue.model";
 
 
 interface IDistrictCreationAttr {

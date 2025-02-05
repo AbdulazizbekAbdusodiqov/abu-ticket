@@ -27,16 +27,16 @@ export class CustomerGuard implements CanActivate {
     let customer: any;
     try {
       customer = this.jwtService.verify(token)
-    } catch (error) {      
+    } catch (error) {
       throw new UnauthorizedException()
     }
-    if(customer.role != 'customer'){
+    if (customer.role != 'customer') {
       throw new UnauthorizedException()
     }
     console.log(customer);
 
     req.customer = customer
-    
+
     return true
   }
 }

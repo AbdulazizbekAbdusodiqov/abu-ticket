@@ -3,8 +3,8 @@ import { CustomerService } from './customer.service';
 import { CustomerController } from './customer.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Customer } from './models/customer.model';
-import { Lang } from 'src/lang/models/lang.model';
-import { JwtModule } from '@nestjs/jwt';
+import { Lang } from '../lang/models/lang.model';
+import { JwtModule } from '@nestjs/jwt'; 
 
 @Module({
   imports: [

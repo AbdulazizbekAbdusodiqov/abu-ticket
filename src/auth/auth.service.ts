@@ -48,7 +48,8 @@ export class AuthService {
             throw new UnauthorizedException("Invalid Email or Password")
         }
 
-
+        // console.log(user.roles);
+        
         for (const role of user.roles) {
             if (role.value == signInDto.value.toUpperCase()) {
                 return this.generateToken(user)

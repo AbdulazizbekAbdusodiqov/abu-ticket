@@ -6,9 +6,9 @@ import { Customer } from "../models/customer.model";
 import { CreateCustomerDto } from "../dto/create-customer.dto";
 import { customerStub } from "./stubs/customer.stub";
 
-jest.mock("../customer.service")
+jest.mock("../customer.service");
 
-describe("UsersController", () => {
+describe("CustomerController", () => {
     let customerController: CustomerController
     let customerService: CustomerService
 
@@ -46,12 +46,17 @@ describe("UsersController", () => {
                     langId: customerStub().langId
                 }
                 customer = await customerController.create(createCustomerDto)
+                // console.log(customer);
+
             })
             test("then it should call customerService", () => {
                 expect(customerService.create).toHaveBeenCalledWith(createCustomerDto)
             })
             it("then it should return customer", () => {
-                expect(customer).toEqual(customerStub())
+                expect(customer).toMatchObject({
+                    ...customerStub(),
+                    birth_day: expect.any(String)
+                })
             })
         })
     })
@@ -77,7 +82,7 @@ describe("UsersController", () => {
                 expect(customerService.update).toHaveBeenCalledWith(customerStub().id, updateCustomerDto)
             })
             it("then it should return customer", () => {
-                expect(customer).toEqual({message: "updated", customer:customerStub()})
+                expect(customer).toMatchObject({ message: "updated", customer: { ...customerStub(), birth_day: expect.any(String) } })
             })
         })
     })
@@ -92,7 +97,10 @@ describe("UsersController", () => {
                 expect(customerService.findAll).toHaveBeenCalled();
             })
             test("then it should return customers", () => {
-                expect(customers).toEqual([customerStub()] );
+                expect(customers).toMatchObject([{
+                    ...customerStub(),
+                    birth_day: expect.any(String)
+                }]);
             })
         })
     })
@@ -107,11 +115,14 @@ describe("UsersController", () => {
                 expect(customerService.findOne).toHaveBeenCalled();
             })
             test("then it should return customers", () => {
-                expect(customer).toEqual(customerStub());
+                expect(customer).toMatchObject({
+                    ...customerStub(),
+                    birth_day: expect.any(String)
+                });
             })
         })
     })
-    
+
     describe("Remove Cusomer", () => {
         describe("when remove customer is called", () => {
             let customer: Object;

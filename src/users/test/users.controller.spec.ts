@@ -1,17 +1,39 @@
 import { JwtService } from "@nestjs/jwt";
 import { UsersController } from "../users.controller"
 import { UsersService } from "../users.service"
-import { Test } from '@nestjs/testing';
+import { Test, TestingModule } from '@nestjs/testing';
 import { CreateUserDto } from "../dto/create-user.dto";
 import { userStub } from "./stubs/user.stub";
 import { User } from "../models/user.model";
-
+import { AppModule } from "../../app.module";
+import * as request from 'supertest';
 
 jest.mock("../users.service")
 
 describe("UsersController", () => {
     let usersController: UsersController
     let usersService: UsersService
+    let app;
+    let token;
+
+    beforeAll(async () => {
+        const moduleFixture: TestingModule = await Test.createTestingModule({
+            imports: [AppModule],
+        }).compile();
+
+        app = moduleFixture.createNestApplication();
+        await app.init();
+
+        const response = await request(app.getHttpServer())
+            .post("/auth/sign-in")
+            .send({
+                email: "nimadir23@test.com",
+                password: "parol_1$",
+                value: "superAdmin"
+            });
+        token = response.body.token;
+        console.log("token", token);
+    }, 60000); // Increase timeout to 60 seconds
 
     beforeAll(async () => {
         const moduleRef = await Test.createTestingModule({

@@ -1,5 +1,5 @@
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
-import { Region } from "src/region/model/region.model";
+import { Region } from "../../region/model/region.model";
 import { Customer } from "../../customer/models/customer.model";
 import { District } from "../../district/models/district.model";
 

@@ -1,5 +1,5 @@
 import { BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
-import { Booking } from "src/booking/model/booking.model";
+import { Booking } from "../../booking/model/booking.model";
 import { Ticket } from "../../ticket/model/ticket.model";
 
 interface IDiscountCouponAttr{

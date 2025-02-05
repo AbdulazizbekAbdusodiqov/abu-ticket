@@ -34,10 +34,10 @@ export class UsersService {
     // }
 
 
-    await newUser.$set("roles", [role.id]);
+    // await newUser.$set("roles", [role.id]);
     // await newUser.$set("roles", [role2.id]);
 
-    await newUser.save()
+    // await newUser.save()
     newUser.roles = [role]
 
     // newUser.roles = [role2]

@@ -9,19 +9,14 @@ export enum Gender {
 
 export class CreateCustomerDto {
     @IsString()
-    @Min(3)
-    @Max(30)
     @ApiProperty({ example: "ism" })
     first_name: string;
     @IsString()
-    @Min(3)
-    @Max(30)
     @ApiProperty({ example: "familiya" })
     last_name: string;
     @IsString()
     phone: string;
     @IsString()
-    @Min(3)
     @ApiProperty({ example: "juda_kuchli_parol" })
     password: string;
     @IsString()

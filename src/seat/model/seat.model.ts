@@ -1,7 +1,7 @@
 import { BelongsTo, Column, DataType, ForeignKey, HasMany, HasOne, Model, Table } from "sequelize-typescript";
-import { SeatType } from "src/seat_type/models/seat_type.model";
-import { Ticket } from "src/ticket/model/ticket.model";
-import { Venue } from "src/venue/model/venue.model";
+import { SeatType } from "../../seat_type/models/seat_type.model";
+import { Ticket } from "../../ticket/model/ticket.model";
+import { Venue } from "../../venue/model/venue.model";
 
 
 interface ISeatCreatonAttr{
